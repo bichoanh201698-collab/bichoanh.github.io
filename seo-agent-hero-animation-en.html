@@ -227,9 +227,16 @@ document.addEventListener('DOMContentLoaded', async function() {
     await Promise.all(uuids.map(async (uuid) => {
       const entry = manifest[uuid];
       try {
-        const binaryStr = atob(entry.data);
-        const bytes = new Uint8Array(binaryStr.length);
-        for (let i = 0; i < binaryStr.length; i++) bytes[i] = binaryStr.charCodeAt(i);
+        let bytes;
+        if (entry.src) {
+          const response = await fetch(entry.src);
+          if (!response.ok) throw new Error('Asset request failed: ' + entry.src);
+          bytes = new Uint8Array(await response.arrayBuffer());
+        } else {
+          const binaryStr = atob(entry.data);
+          bytes = new Uint8Array(binaryStr.length);
+          for (let i = 0; i < binaryStr.length; i++) bytes[i] = binaryStr.charCodeAt(i);
+        }
 
         let finalBytes = bytes;
         if (entry.compressed) {
