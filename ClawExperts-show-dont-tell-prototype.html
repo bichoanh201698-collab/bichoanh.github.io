@@ -3035,7 +3035,7 @@
 
       const dashboardFrame = document.querySelector('.showcase .dashboard-frame');
       const setSeoAnimationLanguage = language => {
-        const source = language === 'vi' ? 'seo-agent-hero-animation-vi.html' : 'seo-agent-hero-animation-en.html';
+        const source = (language === 'vi' ? 'seo-agent-hero-animation-vi.html' : 'seo-agent-hero-animation-en.html') + '?v=b27dd261';
         document.querySelectorAll('[data-seo-animation]').forEach(frame => {
           if (!frame.getAttribute('src')?.endsWith(source)) frame.setAttribute('src', source);
           frame.title = language === 'vi' ? 'Animation SEO Content Agent bằng tiếng Việt' : 'SEO Content Agent animation in English';
@@ -3044,7 +3044,7 @@
       if (dashboardFrame) {
         dashboardFrame.insertAdjacentHTML('beforeend', `
           <section class="agent-live-demo seo-agent-demo seo-bundled-demo" id="seoAgentDemo" aria-label="SEO Content Agent turning a brief into a finished draft">
-            <iframe data-seo-animation title="SEO Content Agent animation" src="seo-agent-hero-animation-en.html" loading="eager"></iframe>
+            <iframe data-seo-animation title="SEO Content Agent animation" src="seo-agent-hero-animation-en.html?v=b27dd261" loading="eager"></iframe>
           </section>
           <section class="agent-live-demo creative-agent-demo" id="creativeAgentDemo" aria-label="AI Creative Studio turning one need into a complete asset pack">
             <div class="agent-demo-canvas">
