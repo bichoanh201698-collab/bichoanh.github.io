@@ -1,0 +1,57 @@
+/* Styles riêng cho 4 trang điều khoản.
+   Header, footer, token màu và .container đều lấy từ site.css (trích thẳng từ homepage),
+   nên ở đây chỉ giữ phần thân trang. Các class đã đổi tên có tiền tố legal- để không
+   đụng với .hero / .closing sẵn có của homepage. */
+
+.legal-page main { padding-top: 132px; }
+
+.legal-hero { padding: 8px 0 20px; text-align: center; }
+.legal-hero .eyebrow { margin: 0 0 12px; font-size: 11.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.legal-hero h1 { margin: 0; font-size: clamp(34px, 5vw, 52px); line-height: 1; letter-spacing: -.055em; }
+.legal-updated { margin: 14px 0 0; color: var(--muted); font-size: 14px; }
+
+.policy-tabs { margin: 20px auto 56px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.policy-tabs a { display: inline-flex; align-items: center; min-height: 38px; padding: 8px 15px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.62); font-size: 12px; font-weight: 700; transition: background .18s ease, border-color .18s ease, color .18s ease; }
+.policy-tabs a:hover, .policy-tabs a[aria-current="page"] { border-color: var(--ink); background: var(--ink); color: #fff; }
+
+.legal-intro { width: min(828px, 100%); margin: 0 auto 56px; padding: 22px 40px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.72); box-shadow: var(--shadow); }
+.legal-intro strong { display: block; font-size: 14px; }
+.legal-intro p { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+
+.policy { width: min(814px, 100%); margin: auto; font-size: 14px; line-height: 1.6; }
+.policy details { border-top: 1px solid var(--line); }
+.policy details:last-child { border-bottom: 1px solid var(--line); }
+.policy summary { position: relative; padding: 18px 48px 18px 0; list-style: none; cursor: pointer; font-size: 16px; font-weight: 800; letter-spacing: -.02em; }
+.policy summary::-webkit-details-marker { display: none; }
+.policy summary::after { content: "+"; position: absolute; right: 4px; top: 14px; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: var(--soft, #f4efee); font-size: 18px; font-weight: 500; }
+.policy details[open] summary::after { content: "−"; }
+.policy summary:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; border-radius: 6px; }
+.policy-body { max-width: 650px; padding: 0 0 26px; color: #494348; }
+.policy-body p { margin: 0 0 16px; }
+.policy-body ul { margin: 8px 0 18px; padding-left: 20px; }
+.policy-body li { margin: 6px 0; }
+.policy-body a { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
+
+.legal-closing { margin-top: 76px; padding: 48px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.legal-closing-inner { display: flex; align-items: center; justify-content: space-between; gap: 36px; }
+.legal-closing h2 { margin: 0; max-width: 520px; font-size: clamp(30px, 4vw, 42px); line-height: 1.05; letter-spacing: -.045em; }
+.legal-closing p { margin: 12px 0 0; max-width: 540px; color: var(--muted); font-size: 14px; }
+.legal-closing .btn { min-height: 52px; min-width: 200px; }
+
+@media (max-width: 900px) {
+  .legal-page main { padding-top: 108px; }
+}
+
+@media (max-width: 780px) {
+  .legal-hero { padding-top: 12px; }
+  .policy-tabs { margin-bottom: 38px; }
+  .legal-intro { padding: 20px 22px; }
+  .policy summary { font-size: 15px; }
+  .legal-closing-inner { align-items: flex-start; flex-direction: column; }
+  .legal-closing .btn { width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .policy-tabs { display: grid; grid-template-columns: 1fr 1fr; }
+  .policy-tabs a { justify-content: center; text-align: center; }
+}
