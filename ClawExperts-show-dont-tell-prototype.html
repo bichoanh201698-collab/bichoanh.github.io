@@ -2581,7 +2581,7 @@
       <div class="footer-top">
         <div class="footer-brand"><img src="assets/embedded/embedded-5e019d9c74bc9365.svg" alt="ClawExperts.com"><form class="footer-search" id="footerSearch"><input aria-label="Describe a workflow" placeholder="What work do you want to automate?"><button aria-label="Submit">↑</button></form><div class="tag-list"><span class="tag">◉ Sales</span><span class="tag">▥ SEO</span><span class="tag">◌ Creative</span></div></div>
         <div class="footer-col"><h4>PRODUCT</h4><a href="#agents">Multi-channel Sales Agent</a><a href="#agents">SEO Content Agent</a><a href="#agents">AI Creative Studio</a><a href="#agents">AI Agent Marketplace</a><a href="#pricing">Pricing</a></div>
-        <div class="footer-col"><h4>TERMS AND POLICIES</h4><a href="#footer">Terms and conditions</a><a href="#footer">Privacy Policy</a><a href="#footer">Refund Policy</a><a href="#footer">Payment Policy</a></div>
+        <div class="footer-col"><h4>TERMS AND POLICIES</h4><a href="terms-of-service.html">Terms and conditions</a><a href="privacy-policy.html">Privacy Policy</a><a href="refund-policy.html">Refund Policy</a><a href="payment-policy.html">Payment Policy</a></div>
         <div class="footer-col"><h4>RESOURCES</h4><a href="#faq">FAQ</a><a href="#faq">Blog</a><a href="#shift">Use Cases</a></div>
         <div class="footer-col"><h4>COMMUNITY</h4><a href="#footer">Zalo Group</a><a href="#footer">Facebook Group</a><a href="#footer">Event</a><a href="#footer">Webinar</a></div>
       </div>
@@ -3633,8 +3633,14 @@
       languageToggle?.addEventListener('click', () => {
         const nextLanguage = languageToggle.getAttribute('aria-pressed') === 'true' ? 'en' : 'vi';
         setSalesLanguage(nextLanguage);
+        try { localStorage.setItem('ce-lang', nextLanguage); } catch (error) { /* chế độ riêng tư: bỏ qua */ }
       });
-      const initialSalesLanguage = new URLSearchParams(window.location.search).get('lang') === 'vi' ? 'vi' : 'en';
+      /* Ngôn ngữ được nhớ lại để khi bấm sang trang điều khoản (file riêng) không bị nhảy về EN. */
+      const readStoredLanguage = () => { try { return localStorage.getItem('ce-lang'); } catch (error) { return null; } };
+      const requestedLanguage = new URLSearchParams(window.location.search).get('lang');
+      const initialSalesLanguage = requestedLanguage === 'vi' || requestedLanguage === 'en'
+        ? requestedLanguage
+        : (readStoredLanguage() === 'vi' ? 'vi' : 'en');
       setSalesLanguage(initialSalesLanguage);
 
       const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
