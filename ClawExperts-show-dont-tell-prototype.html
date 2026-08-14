@@ -736,7 +736,8 @@
     .social-links { margin-top: 20px; display: flex; justify-content: center; gap: 18px; align-items: center; }
     .social-links a { width: 16px; height: 16px; display: grid; place-items: center; }
     .social-links img { width: 16px; height: 16px; }
-    .wordmark { margin: 120px 0 -40px; text-align: center; font-size: clamp(82px, 13vw, 190px); line-height: .8; font-weight: 800; letter-spacing: -.07em; color: rgba(255,255,255,.67); white-space: nowrap; }
+    /* "ClawExperts.com" rộng gấp ~7.75 lần cỡ chữ; chia 8 để luôn vừa khung, chừa ~3% an toàn cho khác biệt font */
+    .wordmark { margin: 120px 0 -40px; text-align: center; font-size: min(164px, calc((100vw - 56px) / 8)); line-height: .8; font-weight: 800; letter-spacing: -.07em; color: rgba(255,255,255,.67); white-space: nowrap; }
 
     .toast { position: fixed; z-index: 1100; left: 50%; bottom: 28px; transform: translate(-50%, 30px); padding: 12px 18px; border-radius: 999px; background: var(--ink); color: #fff; box-shadow: var(--shadow); opacity: 0; pointer-events: none; transition: .25s ease; font-size: 13px; }
     .toast.show { opacity: 1; transform: translate(-50%, 0); }
@@ -818,7 +819,7 @@
       .meta-line { flex-direction: column; }
       .made-in { gap: 10px; }
       .made-inner { white-space: normal; text-align: center; }
-      .wordmark { margin-top: 90px; font-size: 18vw; }
+      .wordmark { margin-top: 90px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -3242,7 +3243,7 @@
         'Three agents.': 'Bao nhiêu Agent',
         'Three jobs moving forward.': 'Bấy nhiêu công việc được xử lý',
         'Choose a specialist and watch the work happen. Each scene shows the result, not another list of capabilities.': 'Chọn một Agent phù hợp và xem công việc tự tiến triển. Mỗi màn hình cho bạn thấy kết quả thật, không chỉ là một danh sách tính năng.',
-        'Free plan. No credit card required.': 'Có gói miễn phí. Không cần thẻ tín dụng.',
+        'Free plan. No credit card required.': 'Bắt đầu miễn phí. Không cần thẻ tín dụng.',
         'Give every customer a reply, even when your team is offline. The agent chats with shoppers 24/7, answers common questions, learns from your store, and hands over to your team when needed. Customers get help faster, feel taken care of, and are less likely to leave for another shop while the AI grows smarter with every interaction.': 'Luôn phản hồi khách hàng, kể cả khi team của bạn đã offline. Agent tự trả lời, tư vấn và theo sát khách 24/7, đồng thời chuyển ca khó cho team đúng lúc và tự cải thiện sau mỗi lần tư vấn.',
         'Create helpful, search-ready content.': 'Tạo nội dung hữu ích, sẵn sàng cho tìm kiếm.',
         'Turn clear briefs into useful, search-ready content while protecting your brand voice.': 'Biến brief rõ ràng thành nội dung hữu ích, sẵn sàng cho tìm kiếm mà vẫn giữ giọng thương hiệu.',
@@ -3299,26 +3300,26 @@
         'Request an agent': 'Yêu cầu một Agent',
         'A better way to work': 'Một cách làm việc tốt hơn',
         'Signal Convergence': 'Signal Convergence',
-        'The shift': 'The shift',
-        'Why expert-built AI Agents': 'Vì sao AI Agent do chuyên gia tạo ra',
-        'outperform AI or experts alone.': 'vượt trội hơn AI riêng lẻ hoặc chuyên gia riêng lẻ.',
-        'Three approaches. Three different outcomes.': 'Ba cách tiếp cận. Ba kết quả khác nhau.',
+        'The shift': 'Bước chuyển mới',
+        'Why expert-built AI Agents': 'Vì sao AI Agent do chuyên gia xây dựng',
+        'outperform AI or experts alone.': 'hiệu quả hơn AI đơn thuần hoặc chuyên gia làm việc độc lập.',
+        'Three approaches. Three different outcomes.': 'Ba cách tiếp cận, ba mức độ hiệu quả khác nhau.',
         'Same customer question': 'Cùng một câu hỏi từ khách hàng',
         'Fast, but misses context': 'Nhanh nhưng thiếu bối cảnh',
         'Easy to get wrong': 'Dễ sai, dễ thiếu sót',
-        'Not ready to act on': 'Chưa đủ để hành động',
+        'Not ready to act on': 'Nhưng chưa sẵn sàng để đưa vào sử dụng.',
         'Thoughtful and accurate': 'Sâu sắc và chính xác',
         'Slower, limited capacity': 'Chậm hơn, giới hạn công suất',
-        'Accurate, but not always timely': 'Chính xác nhưng chưa kịp thời',
-        'Fast with AI': 'Nhanh nhờ AI',
-        'Accurate with expert judgment': 'Chính xác nhờ chuyên gia',
-        'Complete and ready to act on': 'Hoàn chỉnh để hành động',
+        'Accurate, but not always timely': 'Chính xác, nhưng khó đáp ứng ngay khi bạn cần.',
+        'Fast with AI': 'Tốc độ từ AI',
+        'Accurate with expert judgment': 'Độ chính xác từ chuyên gia',
+        'Complete and ready to act on': 'Kết quả hoàn chỉnh, sẵn sàng để sử dụng',
         'Expert-built AI Agent': 'AI Agent do chuyên gia tạo ra',
-        'Fast, trusted, ready to act on.': 'Nhanh, đáng tin cậy, sẵn sàng hành động.',
+        'Fast, trusted, ready to act on.': 'Nhanh hơn, đáng tin cậy hơn và có thể đưa vào sử dụng ngay.',
         'Faster': 'Nhanh hơn',
-        'Complete': 'Trọn vẹn',
-        'When AI and experts work together, you get a better outcome:': 'Kết luận: Khi AI và chuyên gia cùng làm việc, bạn có kết quả tốt hơn:',
-        'faster, trusted, complete.': 'nhanh hơn, tin cậy hơn, trọn vẹn hơn.',
+        'Complete': 'Hoàn chỉnh hơn',
+        'When AI and experts work together, you get a better outcome:': 'AI mang đến tốc độ. Chuyên gia mang đến chiều sâu. Kết hợp lại, bạn có kết quả',
+        'faster, trusted, complete.': 'nhanh hơn, đáng tin cậy hơn và sẵn sàng để sử dụng.',
         'Three ways to approach.': 'Ba cách tiếp cận.',
         'Three different outcomes.': 'Ba kết quả khác nhau.',
         'AI handles speed. Experts add judgment. Agents bring both together.': 'AI lo tốc độ. Chuyên gia thêm kinh nghiệm. Agent kết hợp cả hai.',
@@ -3338,7 +3339,7 @@
         'Check the context': 'Kiểm tra ngữ cảnh',
         'Write the answer': 'Viết câu trả lời',
         'One conversation at a time.': 'Mỗi lần một cuộc trò chuyện.',
-        'Trusted': 'Đáng tin',
+        'Trusted': 'Đáng tin cậy hơn',
         'Limited capacity': 'Giới hạn công suất',
         'Expert judgment is built into the flow.': 'Kinh nghiệm chuyên gia được tích hợp vào quy trình.',
         'Understand context': 'Hiểu ngữ cảnh',
@@ -3347,16 +3348,16 @@
         'Fast + trusted': 'Nhanh + đáng tin',
         'Keeps moving without you': 'Tự tiếp tục, không cần bạn chạm tay',
         'Experience built into the workflow.': 'Kinh nghiệm được tích hợp sẵn vào quy trình.',
-        'AI only': 'Chỉ dùng AI',
-        'Draft ready': 'Có bản nháp',
+        'AI only': 'AI đơn thuần',
+        'Draft ready': 'Nhanh chóng có bản nháp',
         'You finish the work': 'Bạn làm phần còn lại',
         'Fast start, more checking': 'Bắt đầu nhanh, nhưng cần kiểm tra nhiều',
         'Generate a reply': 'Tạo câu trả lời',
         'You check tone and accuracy': 'Bạn kiểm tra giọng điệu và độ chính xác',
         'Draft ready quickly': 'Có bản nháp rất nhanh',
         'You still fill the gaps and decide what is safe to send.': 'Bạn vẫn cần bổ sung phần còn thiếu và quyết định nội dung nào có thể gửi.',
-        'Expert only': 'Chỉ dùng chuyên gia',
-        'Trusted answer': 'Câu trả lời đáng tin cậy',
+        'Expert only': 'Chuyên gia làm việc độc lập',
+        'Trusted answer': 'Chuyên môn đáng tin cậy',
         'One at a time': 'Xử lý từng việc một',
         'Trusted judgment, limited capacity': 'Đáng tin cậy, nhưng khó phục vụ mọi lúc',
         'Read customer and store context': 'Đọc ngữ cảnh của khách và cửa hàng',
@@ -3364,7 +3365,7 @@
         'Thoughtful reply': 'Câu trả lời có cân nhắc',
         'High quality, but one conversation at a time and only when someone is available.': 'Chất lượng cao, nhưng chỉ xử lý từng cuộc trò chuyện và phụ thuộc vào lúc đội ngũ có mặt.',
         'Expert-built AI Agent': 'AI Agent do chuyên gia tạo ra',
-        'Finished for you': 'Hoàn thành cho bạn',
+        'Finished for you': 'Kết quả hoàn chỉnh, sẵn sàng cho bạn',
         'Fast, trusted, ready': 'Nhanh, đáng tin cậy, sẵn sàng',
         'Expert judgment that keeps moving': 'Kinh nghiệm chuyên gia, hoạt động không ngừng',
         'Apply the expert playbook': 'Áp dụng quy trình của chuyên gia',
@@ -3456,8 +3457,8 @@
         'Escalate': 'Bàn giao',
         'Approve': 'Phê duyệt',
         'TRANSPARENT PRICING': 'BẢNG GIÁ MINH BẠCH',
-        'Plans that scale with your agents': 'Gói dịch vụ lớn lên cùng nhu cầu của bạn',
-        'Start with the free plan, then upgrade when you need more capacity, concurrent tasks, or longer-running workflows.': 'Bắt đầu miễn phí, sau đó nâng cấp khi bạn cần thêm dung lượng, nhiều tác vụ cùng lúc hoặc quy trình chạy lâu hơn.',
+        'Plans that scale with your agents': 'Bắt đầu miễn phí. Nâng cấp khi bạn cần.',
+        'Start with the free plan, then upgrade when you need more capacity, concurrent tasks, or longer-running workflows.': 'Dùng miễn phí để bắt đầu, rồi nâng cấp bất cứ lúc nào khi bạn cần hạn mức cao hơn, chạy nhiều tác vụ đồng thời hoặc xử lý các quy trình dài hơn.',
         'Monthly': 'Hàng tháng',
         'Yearly': 'Hàng năm',
         'Save 20%': 'Tiết kiệm 20%',
@@ -3510,8 +3511,8 @@
         'Most agents can be set up in a few minutes. Choose the agent, connect the information or tools it needs, review the settings, and test the first run before relying on it for ongoing work.': 'Hầu hết Agent có thể được thiết lập trong vài phút. Bạn chọn Agent, kết nối thông tin hoặc công cụ cần thiết, xem lại cài đặt và thử lần chạy đầu tiên trước khi giao công việc thường xuyên.',
         'Can I request a custom AI agent?': 'Tôi có thể yêu cầu một AI Agent tùy chỉnh không?',
         'Yes. Tell us what your team is trying to accomplish, how the work is handled today, and which tools are involved. We will help you assess whether an existing agent fits or a custom workflow makes more sense.': 'Có. Hãy chia sẻ mục tiêu của đội ngũ, cách công việc đang được xử lý và những công cụ liên quan. Chúng tôi sẽ giúp bạn đánh giá Agent hiện có đã phù hợp hay một quy trình tùy chỉnh sẽ hợp lý hơn.',
-        'Start with one task you would love to stop doing manually.': 'Bắt đầu từ một việc bạn thật sự muốn ngừng làm thủ công.',
-        'Choose an agent, connect the tools it needs, and see how it handles a real workflow. You can start free and stay in control at every step.': 'Chọn một Agent, kết nối công cụ cần thiết và xem Agent xử lý một quy trình thật. Bạn có thể bắt đầu miễn phí và luôn kiểm soát ở từng bước.',
+        'Start with one task you would love to stop doing manually.': 'Bắt đầu với một công việc bạn muốn tự động hóa.',
+        'Choose an agent, connect the tools it needs, and see how it handles a real workflow. You can start free and stay in control at every step.': 'Chọn Agent phù hợp, kết nối các công cụ cần thiết và để Agent xử lý quy trình thực tế. Bạn có thể bắt đầu miễn phí và vẫn kiểm soát mọi bước.',
         'PRODUCT': 'SẢN PHẨM',
         'AI Agent Marketplace': 'AI Agent Marketplace',
         'TERMS AND POLICIES': 'ĐIỀU KHOẢN VÀ CHÍNH SÁCH',
@@ -3530,7 +3531,7 @@
         '© 2026 ClawExperts · All rights reserved.': '© 2026 ClawExperts · Bảo lưu mọi quyền.',
         'Shaping the Future of Work.': 'Kiến tạo tương lai công việc.',
         'Empowering people to work smarter and live better.': 'Giúp mọi người làm việc thông minh hơn và sống tốt hơn.',
-        'Built in Vietnam for the next generation of work': 'Tạo ra tại Việt Nam, vì một tương lai làm việc tốt hơn'
+        'Built in Vietnam for the next generation of work': 'Từ Việt Nam, kiến tạo tương lai làm việc thông minh hơn.'
       };
 
       const originalTextNodes = new WeakMap();
