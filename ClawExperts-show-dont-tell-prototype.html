@@ -65,7 +65,7 @@
     .nav-wrap { position: fixed; z-index: 1000; inset: 20px 0 auto; pointer-events: none; }
     .nav-pill {
       position: relative;
-      width: min(980px, calc(100% - 32px));
+      width: min(1120px, calc(100% - 32px));
       min-height: 64px;
       margin: auto;
       padding: 10px 14px 10px 18px;
@@ -101,10 +101,11 @@
       gap: 6px;
       border: 0;
       border-radius: 13px;
-      padding: 0 14px;
+      padding: 0 12px;
       background: transparent;
       color: var(--muted);
       font-size: 14px;
+      white-space: nowrap;
       cursor: pointer;
       transition: background .18s ease, color .18s ease;
     }
@@ -635,7 +636,13 @@
     .plan .audience { margin: 8px 0 0; color: var(--muted); font-size: 13px; }
     .plan.featured .audience, .plan.featured .billing { color: #b9b4b5; }
     .price { margin: 17px 0 0; font-size: 34px; font-weight: 800; letter-spacing: -.05em; }
-    .old-price { float: right; margin-top: 10px; color: #8c8588; font-size: 13px; text-decoration: line-through; font-weight: 400; }
+    .price-meta { float: right; margin-top: 11px; display: inline-flex; align-items: center; gap: 8px; }
+    .old-price { color: #8c8588; font-size: 13px; text-decoration: line-through; font-weight: 400; letter-spacing: 0; }
+    .price-off { display: inline-flex; align-items: center; min-height: 21px; padding: 0 8px; border-radius: 999px; background: rgba(0,173,125,.14); color: #168665; font-size: 10px; font-weight: 850; letter-spacing: .02em; }
+    .plan.featured .old-price { color: #9b9698; }
+    .plan.featured .price-off { background: rgba(0,173,125,.26); color: #5ee0b8; }
+    .plan-tag { display: inline-flex; align-items: center; min-height: 22px; margin-left: 8px; padding: 0 10px; border-radius: 999px; background: rgba(120,113,110,.11); color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .04em; vertical-align: middle; }
+    .plan.featured .plan-tag { background: rgba(255,255,255,.15); color: #d6d1d2; }
     .billing { margin: 6px 0 16px; color: var(--muted); font-size: 11px; min-height: 17px; }
     .plan .btn { width: 100%; min-height: 43px; }
     .plan.featured .btn { background: #fff; color: var(--ink); }
@@ -941,24 +948,26 @@
     .film-output span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; }
     .film-output button { min-height: 40px; border: 0; border-radius: 10px; padding: 0 18px; background: var(--ink); color: #fff; font: inherit; font-size: 12px; font-weight: 800; cursor: pointer; }
 
-    .showcase { position: relative; margin: 40px 18px 0; border-radius: 46px; padding: 118px 0 110px; background: #1e1d1c; color: #fff; overflow: clip; }
+    .showcase { position: relative; margin: 0; border-radius: 0; padding: 84px 0 96px; background: transparent; color: var(--ink); overflow: clip; }
     .showcase-sticky { position: relative; }
     .showcase .scene-head { display: flex; align-items: end; justify-content: space-between; gap: 48px; margin-bottom: 54px; }
     .showcase .scene-head h2 { max-width: 780px; margin: 0; font-size: clamp(42px, 5vw, 74px); line-height: .98; letter-spacing: -.055em; }
-    .showcase .scene-head p { max-width: 360px; margin: 0; color: rgba(255,255,255,.58); font-size: 15px; }
+    .showcase .scene-head p { max-width: 360px; margin: 0; color: var(--muted); font-size: 15px; }
+    .showcase-side { display: flex; flex-direction: column; }
+    .showcase-side .agent-tabs { flex: 0 0 auto; }
     .showcase-grid { grid-template-columns: 330px 1fr; gap: 30px; align-items: stretch; }
     .agent-tabs { padding: 0; }
-    .agent-tab { min-height: 104px; border-color: rgba(255,255,255,.13); color: rgba(255,255,255,.42); transition: color .25s ease, padding .25s ease; }
+    .agent-tab { min-height: 104px; border-color: var(--line); color: rgba(28,28,30,.46); transition: color .25s ease, padding .25s ease; }
     .agent-tab strong { font-size: 19px; }
-    .agent-tab.active { color: #fff; padding-left: 18px; }
-    .agent-tab.active strong { color: #fff; }
+    .agent-tab.active { color: var(--ink); padding-left: 18px; }
+    .agent-tab.active strong { color: var(--ink); }
     .agent-tab:focus { outline: none; }
     .agent-tab:focus-visible { outline: 2px solid var(--red); outline-offset: -4px; }
     .agent-tab.active::before { content: ""; position: absolute; left: 0; width: 4px; height: 44px; border-radius: 999px; background: var(--red); }
     .agent-tab { position: relative; }
-    .agent-tab p { color: rgba(255,255,255,.58); }
+    .agent-tab p { color: var(--muted); }
     .agent-tab .tab-details p + p { display: none; }
-    .dashboard-frame { position: relative; min-height: 570px; overflow: hidden; border-color: rgba(255,255,255,.12); background: #d9d6d3; }
+    .dashboard-frame { position: relative; min-height: 570px; overflow: hidden; border-color: #ded7d5; background: #e7e3e1; }
     .dashboard-frame img { min-height: 545px; object-fit: cover; object-position: center top; }
     .scene-outcome {
       position: absolute;
@@ -1092,12 +1101,12 @@
       .hero-film { min-height: auto; border-radius: 26px; }
       .film-body { grid-template-columns: 1fr; gap: 36px; padding: 40px 28px 42px; }
       .film-request h2 { font-size: clamp(38px, 10vw, 60px); }
-      .showcase { margin-inline: 8px; border-radius: 30px; }
+      .showcase { margin-inline: 0; border-radius: 0; }
       .showcase .scene-head { display: block; }
       .showcase .scene-head p { margin-top: 20px; }
       .showcase-grid { grid-template-columns: 1fr; }
       .agent-tabs { display: grid; grid-template-columns: repeat(3, 1fr); }
-      .agent-tab { padding: 16px 10px; min-height: 82px; border-bottom: 0; border-right: 1px solid rgba(255,255,255,.12); text-align: center; }
+      .agent-tab { padding: 16px 10px; min-height: 82px; border-bottom: 0; border-right: 1px solid var(--line); text-align: center; }
       .agent-tab.active { padding-left: 10px; }
       .agent-tab.active::before { left: 25%; right: 25%; bottom: 0; width: auto; height: 3px; }
       .agent-tab .tab-details { display: none; }
@@ -1120,6 +1129,7 @@
       .film-output { grid-template-columns: 1fr; }
       .film-output button { width: 100%; }
       .showcase { padding: 80px 0; }
+      .showcase.is-scroll-story { scroll-margin-top: 100px; }
       .showcase .scene-head h2 { font-size: 42px; }
       .agent-tab strong { font-size: 13px; }
       .dashboard-frame { min-height: 340px; padding: 8px; }
@@ -1228,22 +1238,28 @@
     }
 
     .scene-intro { width: min(360px, 100%); }
-    .scene-intro .showcase-cta { margin-top: 22px; text-align: left; }
-    .scene-intro .showcase-cta .btn { min-width: 164px; min-height: 44px; border: 1px solid var(--red); background: var(--red); color: #fff; box-shadow: 0 14px 30px rgba(229,52,43,.28); }
-    .scene-intro .showcase-cta .btn:hover { border-color: #fff; background: #fff; color: var(--ink); transform: translateY(-2px); }
-    .scene-intro .showcase-cta .fineprint {
+    .showcase-side .showcase-cta { margin: 26px 0 0; text-align: left; }
+    .showcase-side .showcase-cta .btn { min-width: 164px; min-height: 44px; border: 1px solid var(--red); background: var(--red); color: #fff; box-shadow: 0 14px 30px rgba(229,52,43,.28); }
+    .showcase-side .showcase-cta .btn:hover { border-color: var(--ink); background: var(--ink); color: #fff; transform: translateY(-2px); }
+    .showcase-side .showcase-cta .fineprint {
       display: block;
       max-width: 260px;
       margin-top: 8px;
-      color: rgba(255,255,255,.48);
+      color: var(--muted);
       font-size: 10px;
       line-height: 1.35;
       font-weight: 600;
       letter-spacing: .01em;
     }
+    @media (max-width: 900px) {
+      .showcase-side .showcase-cta { margin-top: 24px; text-align: center; }
+      .showcase-side .showcase-cta .btn { width: 100%; }
+      .showcase-side .showcase-cta .fineprint { max-width: none; }
+    }
 
-    .proof-stage { min-height: 760px; border: 1px solid #ded8d2; background: #f5f2ed; color: var(--ink); }
-    .proof-stage::after { border-color: #d9d2cc; }
+    .proof-stage { min-height: 760px; border: 0; border-radius: 0; background: transparent; color: var(--ink); }
+    .proof-stage::after { display: none; }
+    .proof-card { border-color: var(--line); box-shadow: 0 18px 44px rgba(61,48,43,.10); }
     .proof-number { color: var(--red); }
     .proof-core { max-width: min(610px, 48vw); }
     .proof-core p { color: var(--muted); }
@@ -2327,17 +2343,10 @@
     </section>
 
     <section class="showcase is-scroll-story" id="agents">
-      <img class="social-orb fb" src="assets/embedded/embedded-5be45c4ab179700c.svg" alt=""><img class="social-orb zalo" src="assets/embedded/embedded-a47b978c17c4e02a.png" alt="">
       <div class="showcase-sticky">
       <div class="container">
-        <div class="scene-head">
-          <h2>Three agents.<br>Three jobs moving forward.</h2>
-          <div class="scene-intro">
-            <p>Choose a specialist and watch the work happen. Each scene shows the result, not another list of capabilities.</p>
-            <div class="showcase-cta" id="showcaseCta"><button class="btn" data-action="start">Start free</button><p class="fineprint">Free plan. No credit card required.</p></div>
-          </div>
-        </div>
         <div class="showcase-grid">
+          <div class="showcase-side">
           <div class="agent-tabs" role="tablist" aria-label="Agents">
             <button class="agent-tab active" role="tab" aria-selected="true" data-agent="sales" data-image="assets/embedded/embedded-073e1c5312fd15f8.jpg">
               <strong>Multi-channel Sales Agent</strong>
@@ -2345,6 +2354,8 @@
             </button>
             <button class="agent-tab" role="tab" aria-selected="false" data-agent="seo" data-image="assets/embedded/embedded-5abf3a2664d12619.jpg"><strong>SEO Content Agent</strong><div class="tab-details"><p>Turn clear briefs into useful, search-ready content while protecting your brand voice.</p></div></button>
             <button class="agent-tab" role="tab" aria-selected="false" data-agent="creative" data-image="assets/embedded/embedded-f762750bc517083a.jpg"><strong>AI Creative Studio</strong><div class="tab-details"><p>Create on-brand visual directions for ads, campaigns, and social content.</p></div></button>
+          </div>
+            <div class="showcase-cta" id="showcaseCta"><button class="btn" data-action="start">Start free</button><p class="fineprint">Free plan. No credit card required.</p></div>
           </div>
           <div class="dashboard-frame"><img id="agentImage" src="assets/embedded/embedded-073e1c5312fd15f8.jpg" alt="Multi-channel Sales Agent dashboard"></div>
         </div>
@@ -2363,8 +2374,8 @@
           <figure class="proof-photo phone"><img src="assets/show-dont-tell/proof-phone-desk.png" alt="A quiet desk with a phone and coffee after the work is finished"></figure>
           <div class="proof-core">
             <span class="proof-number" id="proofNumber">0%</span>
-            <h2 id="proofTitle">of the repeatable work prepared before Sales, SEO, and Creative need your hands.</h2>
-            <p>Pick the agent you need. It gathers context, prepares the next useful output, and brings back work that is ready for your review.</p>
+            <h2 id="proofTitle">of the work you hand over, finished before you touch it</h2>
+            <p>All on one platform</p>
           </div>
         </div>
       </div>
@@ -2381,7 +2392,7 @@
           <div class="expert-domain">Sales operations</div>
           <blockquote>“I have seen good sales opportunities go quiet simply because a message was buried in another inbox. I built this agent to keep every conversation moving with the right context, while making sure the decisions that need your judgment always come back to you.”</blockquote>
           <div class="expert-author">
-            <div class="expert-author-copy"><strong>Trương Trí Tín</strong><span>AI Agent Expert, ClawExperts.com</span></div>
+            <div class="expert-author-copy"><strong>Truong Tri Tin</strong><span>AI Agent Expert, ClawExperts.com</span></div>
             <img src="assets/expert-stories/sales-workflow-expert.png" alt="Portrait representing the sales workflow expert behind the agent">
           </div>
         </article>
@@ -2389,7 +2400,7 @@
           <div class="expert-domain">SEO content</div>
           <blockquote>“SEO content gets exhausting when you have to hold search intent, source quality, brand voice, and deadlines in your head at the same time. I built this agent to carry that structure, so you can spend your energy on the useful idea your audience came for.”</blockquote>
           <div class="expert-author">
-            <div class="expert-author-copy"><strong>Phương Phạm Quế</strong><span>AI Agent Expert, ClawExperts.com</span></div>
+            <div class="expert-author-copy"><strong>Phuong Pham Que</strong><span>AI Agent Expert, ClawExperts.com</span></div>
             <img src="assets/expert-stories/seo-content-expert.png" alt="Portrait representing the SEO content expert behind the agent">
           </div>
         </article>
@@ -2397,7 +2408,7 @@
           <div class="expert-domain">Creative systems</div>
           <blockquote>“Creative work should begin with a direction, not the pressure of a blank canvas. I built this agent to turn a clear brief into thoughtful starting points your team can react to, refine, and make their own.”</blockquote>
           <div class="expert-author">
-            <div class="expert-author-copy"><strong>Nguyễn Thái Bình</strong><span>Head of Product and AI Expert, ClawExperts.com</span></div>
+            <div class="expert-author-copy"><strong>Nguyen Thai Binh</strong><span>Head of Product and AI Expert, ClawExperts.com</span></div>
             <img src="assets/expert-stories/creative-systems-expert.png" alt="Portrait representing the creative systems expert behind the agent">
           </div>
         </article>
@@ -2537,9 +2548,9 @@
         <div class="billing-toggle" role="group" aria-label="Billing period"><button class="active" data-period="monthly">Monthly</button><button data-period="yearly">Yearly <span class="save-badge">Save 20%</span></button></div>
         <div class="plans">
           <article class="plan"><h3>Personal</h3><p class="audience">For getting started</p><div class="price" data-monthly="Free" data-yearly="Free">Free</div><p class="billing">No credit card · forever</p><button class="btn" data-action="start">Start free</button><hr><span class="best-for">BEST FOR</span><ul class="features"><li>Explore ClawExperts</li><li>1–2 tasks at once</li><li>1 vCPU · 4 GB · 1 GB SSD</li><li class="resource-policy-item"><button class="resource-policy-trigger" type="button" aria-describedby="resourcePolicyTooltip" aria-expanded="false">Resource reclaim · after 48h</button><aside class="resource-policy-tooltip" id="resourcePolicyTooltip" role="tooltip"><strong class="resource-policy-title"><img src="assets/show-dont-tell/resource-alert.svg" alt="">Free workspace inactivity policy</strong><div class="resource-policy-step"><img src="assets/show-dont-tell/resource-trash.svg" alt=""><div><strong>After 48 hours of inactivity</strong><p>Your workspace goes to sleep. We’ll notify you by email so you can wake it up.</p></div></div><div class="resource-policy-step"><img src="assets/show-dont-tell/resource-moon.svg" alt=""><div><strong>After 96 hours of inactivity</strong><p>Your workspace and all stored data are permanently deleted.</p></div></div><div class="resource-policy-upgrade"><img src="assets/show-dont-tell/resource-shield.svg" alt=""><strong>Upgrade to keep your workspace and data indefinitely.</strong></div></aside></li></ul></article>
-          <article class="plan"><h3>Starter</h3><p class="audience">For first AI workflows</p><div class="price" data-monthly="$4/mo" data-yearly="$3.20/mo" data-vi-monthly="100.000đ/tháng" data-vi-yearly="80.000đ/tháng">$4/mo <span class="old-price" data-en-price="$9" data-vi-price="200.000đ">$9</span></div><p class="billing" data-monthly="Billed monthly" data-yearly="$38.40 billed yearly" data-vi-monthly="Thanh toán 100.000đ mỗi tháng" data-vi-yearly="Thanh toán 960.000đ mỗi năm">Billed monthly</p><button class="btn" data-action="start">Choose Starter</button><hr><span class="best-for">BEST FOR</span><ul class="features"><li>Simple agent workflows</li><li>2–4 tasks at once</li><li>2 vCPU · 4 GB · 5 GB SSD</li><li>Support · Community</li></ul></article>
-          <article class="plan featured"><span class="popular">MOST POPULAR</span><h3>Daily</h3><p class="audience">For everyday automation</p><div class="price" data-monthly="$9/mo" data-yearly="$7.20/mo" data-vi-monthly="250.000đ/tháng" data-vi-yearly="200.000đ/tháng">$9/mo <span class="old-price" data-en-price="$19" data-vi-price="500.000đ">$19</span></div><p class="billing" data-monthly="Billed monthly" data-yearly="$86.40 billed yearly" data-vi-monthly="Thanh toán 250.000đ mỗi tháng" data-vi-yearly="Thanh toán 2.400.000đ mỗi năm">Billed monthly</p><button class="btn" data-action="start">Choose Daily</button><hr><span class="best-for">BEST FOR</span><ul class="features"><li>3–5 external workflows</li><li>5–10 tasks at once</li><li>4 vCPU · 8 GB · 10 GB SSD</li><li>Support · AI expert</li></ul></article>
-          <article class="plan"><h3>Scale</h3><p class="audience">For teams and heavier workloads</p><div class="price" data-monthly="$19/mo" data-yearly="$15.20/mo" data-vi-monthly="500.000đ/tháng" data-vi-yearly="400.000đ/tháng">$19/mo <span class="old-price" data-en-price="$39" data-vi-price="1.000.000đ">$39</span></div><p class="billing" data-monthly="Billed monthly" data-yearly="$182.40 billed yearly" data-vi-monthly="Thanh toán 500.000đ mỗi tháng" data-vi-yearly="Thanh toán 4.800.000đ mỗi năm">Billed monthly</p><button class="btn" data-action="start">Choose Scale</button><hr><span class="best-for">BEST FOR</span><ul class="features"><li>10–20 flows at once</li><li>Long-running automation</li><li>8 vCPU · 16 GB · 40 GB SSD</li><li>Support · Priority 1:1</li></ul></article>
+          <article class="plan"><h3>Starter <span class="plan-tag">Individual</span></h3><p class="audience">For first AI workflows</p><div class="price" data-monthly="$4/mo" data-yearly="$3.20/mo" data-vi-monthly="99.000đ/tháng" data-vi-yearly="79.000đ/tháng">$4/mo <span class="price-meta"><span class="old-price" data-en-price="$9" data-vi-price="225.000đ">$9</span><span class="price-off" data-monthly="-56%" data-yearly="-64%" data-vi-monthly="-56%" data-vi-yearly="-65%">-56%</span></span></div><p class="billing" data-monthly="Billed monthly" data-yearly="$38.40 billed yearly" data-vi-monthly="Thanh toán 99.000đ mỗi tháng" data-vi-yearly="Thanh toán 948.000đ mỗi năm">Billed monthly</p><button class="btn" data-action="start">Choose Starter</button><hr><span class="best-for">BEST FOR</span><ul class="features"><li>Simple agent workflows</li><li>2–4 tasks at once</li><li>2 vCPU · 4 GB · 5 GB SSD</li><li>Support · Community</li></ul></article>
+          <article class="plan featured"><span class="popular">MOST POPULAR</span><h3>Daily</h3><p class="audience">For everyday automation</p><div class="price" data-monthly="$9/mo" data-yearly="$7.20/mo" data-vi-monthly="249.000đ/tháng" data-vi-yearly="199.000đ/tháng">$9/mo <span class="price-meta"><span class="old-price" data-en-price="$19" data-vi-price="475.000đ">$19</span><span class="price-off" data-monthly="-53%" data-yearly="-62%" data-vi-monthly="-48%" data-vi-yearly="-58%">-53%</span></span></div><p class="billing" data-monthly="Billed monthly" data-yearly="$86.40 billed yearly" data-vi-monthly="Thanh toán 249.000đ mỗi tháng" data-vi-yearly="Thanh toán 2.388.000đ mỗi năm">Billed monthly</p><button class="btn" data-action="start">Choose Daily</button><hr><span class="best-for">BEST FOR</span><ul class="features"><li>3–5 external workflows</li><li>5–10 tasks at once</li><li>4 vCPU · 8 GB · 10 GB SSD</li><li>Support · AI expert</li></ul></article>
+          <article class="plan"><h3>Scale <span class="plan-tag">Team</span></h3><p class="audience">For teams and heavier workloads</p><div class="price" data-monthly="$19/mo" data-yearly="$15.20/mo" data-vi-monthly="499.000đ/tháng" data-vi-yearly="399.000đ/tháng">$19/mo <span class="price-meta"><span class="old-price" data-en-price="$39" data-vi-price="975.000đ">$39</span><span class="price-off" data-monthly="-51%" data-yearly="-61%" data-vi-monthly="-49%" data-vi-yearly="-59%">-51%</span></span></div><p class="billing" data-monthly="Billed monthly" data-yearly="$182.40 billed yearly" data-vi-monthly="Thanh toán 499.000đ mỗi tháng" data-vi-yearly="Thanh toán 4.788.000đ mỗi năm">Billed monthly</p><button class="btn" data-action="start">Choose Scale</button><hr><span class="best-for">BEST FOR</span><ul class="features"><li>10–20 flows at once</li><li>Long-running automation</li><li>8 vCPU · 16 GB · 40 GB SSD</li><li>Support · Priority 1:1</li></ul></article>
         </div>
         <div class="enterprise"><div><h3>Enterprise</h3><p>For organizations that need tailored workflows, stronger controls, or hands-on support.</p></div><button class="btn" data-action="talk">Talk to us</button></div>
       </div>
@@ -3232,7 +3243,7 @@
         'Three jobs moving forward.': 'Bấy nhiêu công việc được xử lý',
         'Choose a specialist and watch the work happen. Each scene shows the result, not another list of capabilities.': 'Chọn một Agent phù hợp và xem công việc tự tiến triển. Mỗi màn hình cho bạn thấy kết quả thật, không chỉ là một danh sách tính năng.',
         'Free plan. No credit card required.': 'Có gói miễn phí. Không cần thẻ tín dụng.',
-        'Give every customer a reply, even when your team is offline. The agent chats with shoppers 24/7, answers common questions, learns from your store, and hands over to your team when needed. Customers get help faster, feel taken care of, and are less likely to leave for another shop while the AI grows smarter with every interaction.': 'Mọi khách hàng đều được phản hồi, kể cả khi đội ngũ của bạn đang offline. Agent trò chuyện với khách 24/7, trả lời các câu hỏi thường gặp, học từ thông tin của cửa hàng và bàn giao cho đội ngũ khi cần. Khách được hỗ trợ nhanh hơn, cảm thấy luôn được quan tâm và ít rời sang nơi khác, trong khi AI ngày càng hiểu công việc hơn sau mỗi lần tương tác.',
+        'Give every customer a reply, even when your team is offline. The agent chats with shoppers 24/7, answers common questions, learns from your store, and hands over to your team when needed. Customers get help faster, feel taken care of, and are less likely to leave for another shop while the AI grows smarter with every interaction.': 'Luôn phản hồi khách hàng, kể cả khi team của bạn đã offline. Agent tự trả lời, tư vấn và theo sát khách 24/7, đồng thời chuyển ca khó cho team đúng lúc và tự cải thiện sau mỗi lần tư vấn.',
         'Create helpful, search-ready content.': 'Tạo nội dung hữu ích, sẵn sàng cho tìm kiếm.',
         'Turn clear briefs into useful, search-ready content while protecting your brand voice.': 'Biến brief rõ ràng thành nội dung hữu ích, sẵn sàng cho tìm kiếm mà vẫn giữ giọng thương hiệu.',
         'Turn a brief into research-backed content that matches search intent, keeps your brand voice, and is ready for your review.': 'Biến brief thành nội dung có nghiên cứu, đúng ý định tìm kiếm, giữ giọng thương hiệu và sẵn sàng để bạn duyệt.',
@@ -3247,8 +3258,11 @@
         'Campaign options prepared so your team reviews choices': 'Agent tạo các lựa chọn chiến dịch để đội ngũ duyệt và tinh chỉnh',
         'FINISHED OUTCOME': 'KẾT QUẢ HOÀN CHỈNH',
         'Finished outcome': 'Kết quả hoàn chỉnh',
-        'of the repeatable work prepared before Sales, SEO, and Creative need your hands.': 'công việc lặp lại được xử lý cho cả Bán hàng, SEO lẫn Creative trước khi bạn chạm tay vào.',
-        'Pick the agent you need. It gathers context, prepares the next useful output, and brings back work that is ready for your review.': 'Chọn Agent bạn cần, để Agent gom ngữ cảnh và trả lại kết quả sẵn sàng để bạn duyệt.',
+        'of the work you hand over, finished before you touch it': 'công việc được giao hoàn thành trước khi bạn chạm tay vào',
+        'All on one platform': 'Tất cả trên 1 nền tảng',
+        'Truong Tri Tin': 'Trương Trí Tín',
+        'Phuong Pham Que': 'Phương Phạm Quế',
+        'Nguyen Thai Binh': 'Nguyễn Thái Bình',
         'Why these agents exist': 'Vì sao chúng tôi tạo ra những AI Agent này',
         'Built by people who have done the work.': 'Được xây bởi những người đã thật sự làm công việc đó.',
         'They know where the work gets heavy because they have carried it too. Each agent begins with the parts they wished someone else could reliably take off their plate.': 'Những Chuyên gia trong ngành thấu hiểu sự mệt mỏi của những công việc lặp lại. Thêm một AI Agent được tạo ra, giảm bớt một công việc lặp lại phải xử lý.',
@@ -3459,6 +3473,7 @@
         'After 96 hours of inactivity': 'Sau 96 giờ không hoạt động',
         'Your workspace and all stored data are permanently deleted.': 'Workspace và toàn bộ dữ liệu đã lưu sẽ bị xóa vĩnh viễn.',
         'Upgrade to keep your workspace and data indefinitely.': 'Nâng cấp để giữ workspace và dữ liệu lâu dài.',
+        'Individual': 'Cá nhân',
         'For first AI workflows': 'Cho quy trình AI đầu tiên',
         'Simple agent workflows': 'Quy trình Agent đơn giản',
         '2–4 tasks at once': '2–4 tác vụ cùng lúc',
